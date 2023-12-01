@@ -1,24 +1,26 @@
-# WordPress Hosting Made Easy - Optimised AWS Infrastructure with Minimal Effort
+# Press Release: WordPress Hosting Made Easy - Optimised AWS Infrastructure with Minimal Effort
 
 ![cloud architecture](awsarchitecture.png)
 
 ## LAUNCH OF A TAILORED SOLUTION
-A group of cloud engineering experts today launched a new managed WordPress hosting service specifically tailored for freelance developers and small business owners on a budget. The innovative platform handles all WordPress hosting complexities so users can devote more time to building site content and less time managing servers. 
+A group of cloud engineers today launched a new managed WordPress hosting service specifically tailored for solopreneurs and small business owners on a budget. The innovative platform handles all WordPress hosting complexities so users can devote more time to building site content and less time managing servers and tehnical knowhows. 
 
 ## FEATURE-RICH SERVICE
 The service features enterprise-level WordPress infrastructure running on Amazon Web Services (AWS), including automatic scaling, daily backups, easy restores, managed updates, CDN, and 24/7 expert support. Users benefit from optimised AWS configurations and proprietary technology that improves WordPress speed and security. 
 
+![cloud architecture](awsdiagra1.png)
+
 ## SIMPLIFYING WORDPRESS HOSTING
-> "We are focused on driving the effort out of hosting WordPress for solopreneurs and small teams so they can focus on what matters - creating compelling sites," said [Mazid Rahman], principal architect. "By taking care of the WordPress infrastructure, security, and management, our customers can simply create more and develop better."
+> "We are focused on driving the effort out of hosting WordPress for solopreneurs and small teams so they can focus on what matters - creating compelling sites," said Maz, principal architect. "By taking care of the WordPress infrastructure, security, and management, our customers can simply create more and develop better."
 
 ## ADDRESSING INDUSTRY CHALLENGES
-The service was born out of the increasing difficulties freelancers and business owners faced finding affordable, managed WordPress hosting solutions on the public cloud. Pain points included unpredictable costs, server management complexities, lack of scaling capabilities, and companies selling excessive features at expensive price points. 
+The service was born out of the increasing difficulties freelancers and small business owners faced finding affordable, managed WordPress hosting solutions on the public cloud. Pain points included unpredictable costs, server management complexities, lack of scaling capabilities, and companies selling excessive features at expensive price points. 
 
 ## LIBERATING USERS
-> "The freedom gained from offloading the hosting responsibilities is invaluable for our target customers," explained [Mazid Rahman]. "We handle everything related to the WordPress servers and runtime so all they need to worry about is their content."
+> "The freedom gained from offloading the hosting responsibilities is invaluable for our target customers," explained Simon. "We handle everything related to the WordPress servers and runtime so all they need to worry about is their content."
 
 ## GET STARTED TODAY
-Interested users can get started by visiting www.cloudesigner.co.uk and email their site information. The team will take care of the rest.
+If you are in need of online resume/portfolo site, you can get started by visiting www.cloudesigner.co.uk and email your  information. The cloudesigner will take care of the rest.
 
 ## FAQ Section: 
 

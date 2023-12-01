@@ -1,0 +1,136 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: CloudFormation template for WordPress deployment
+
+Parameters:
+  KeyPairName:
+    Description: Enter the name of your existing key pair
+    Type: AWS::EC2::KeyPair::KeyName
+  
+  DomainName:
+    Description: Enter your registered domain name  
+    Type: String
+
+Resources:
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      CidrBlock: 10.0.1.0/24
+  
+  PublicSubnet2: 
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 1, !GetAZs '' ]
+      CidrBlock: 10.0.2.0/24
+
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:  
+      VpcId: !Ref VPC
+
+  InternetRoute:     
+    Type: AWS::EC2::Route
+    DependsOn: VPCGatewayAttachment
+    Properties:    
+      RouteTableId: !Ref RouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  SubnetRouteTableAssociation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation  
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref RouteTable
+
+  SubnetRouteTableAssociation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation   
+    Properties:
+      SubnetId: !Ref PublicSubnet2
+      RouteTableId: !Ref RouteTable  
+
+  SecurityGroupWP:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP and SSH access
+      VpcId: !Ref VPC
+      SecurityGroupIngress:  
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0   
+        - IpProtocol: tcp  
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443 
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: !Ref KeyPairName
+      InstanceType: t3.micro   
+      ImageId: ami-0557a15b87f6559cf # Ubuntu 20.04 LTS
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          GroupSet: 
+            - !Ref SecurityGroupWP
+          SubnetId: !Ref PublicSubnet1
+      UserData:
+        Fn::Base64:
+          !Sub |   
+            #!/bin/bash
+            # Install Nginx, PHP and MySQL
+            apt-get update -y && apt-get upgrade -y                 
+            apt install nginx apache2 mariadb-server npm php php-mysql php-fpm -y
+            
+            # Security and WordPress database config
+            mysql_secure_installation
+            mysql -u root -e "CREATE DATABASE wpdb;"
+            mysql -u root -e "GRANT ALL PRIVILEGES ON wpdb.* TO 'wpsiteuser'@'localhost' IDENTIFIED BY 'strongpassword!123'; FLUSH PRIVILEGES;"
+            
+            # Setup WordPress  
+            cd /var/www/html
+            wget https://wordpress.org/latest.tar.gz
+            tar xzvf latest.tar.gz               
+            cp -r wordpress/* /var/www/html
+            rm -rf wordpress latest.tar.gz
+            chown -R www-data:www-data /var/www/html
+            systemctl restart apache2  
+            
+            # Install certbot and get SSL certificate 
+            snap install core; snap refresh core
+            snap install --classic certbot
+            certbot --nginx -d ${DomainName} -d www.${DomainName}
+            service nginx restart    
+ 
+  EIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      InstanceId: !Ref EC2Instance
+
+Outputs:
+  WebsiteURL:
+    Value: !Sub
+      - https://${DomainName}
+      - DomainName: !Ref DomainName

@@ -2,7 +2,7 @@
 
 ## What is the problem or opportunity?
 
-The problem is that freelancers and small businesses struggle to find affordable, managed WordPress hosting that simplifies infrastructure complexity. The opportunity is providing an optimized WordPress hosting solution on AWS.
+The problem is that freelancers and small businesses struggle to find affordable, managed WordPress hosting that simplifies infrastructure complexity. The opportunity is providing an optimised WordPress hosting solution on AWS.
 
 ## What measure shows the problem is real?
 
@@ -24,7 +24,7 @@ Success will be measured by total customers onboarded, customer retention and lo
 
 ## The proposed design includes:
 
-- Managed WordPress hosting on optimized AWS infrastructure
+- Managed WordPress hosting on optimised AWS infrastructure
 - Automatic scaling
 - Security hardening
 - Backups
