@@ -77,7 +77,7 @@ This proposal outlines distinct projects, each focusing on key aspects of AWS de
    - Successful deployment of a WordPress server.
    - Documentation submission.
 
-2. **Week 2:** Completion of WordPress Deployment
+2. **Week 2:** Completion of Serverless Web Application Deployment
    - Deployment of WordPress in an advanced environment.
    - Documentation of the setup and security measures.
 
