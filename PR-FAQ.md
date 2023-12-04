@@ -1,6 +1,6 @@
 # Press Release: WordPress Hosting Made Easy - Optimised AWS Infrastructure with Minimal Effort
 
-![cloud architecture](awsarchitecture.png)
+![cloud architecture](awsdiagram2.png)
 
 ## LAUNCH OF A TAILORED SOLUTION
 A group of cloud engineers today launched a new managed WordPress hosting service specifically tailored for solopreneurs and small business owners on a budget. The innovative platform handles all WordPress hosting complexities so users can devote more time to building site content and less time managing servers and tehnical knowhows. 
@@ -52,4 +52,3 @@ We guarantee 99.95% uptime excluding scheduled maintenance. All incidents are me
 
 Yes, we offer a 30-day money-back guarantee so customers can evaluate our platform risk-free. This gives them ample time to confirm it meets their WordPress hosting needs.
 
-Let me know if you need any other questions added or have additional details!
