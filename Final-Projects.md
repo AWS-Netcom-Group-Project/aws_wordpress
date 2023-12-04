@@ -25,7 +25,7 @@ This proposal outlines distinct projects, each focusing on key aspects of AWS de
   - Successfully deployed WordPress server on an EC2 instance.
   - Documentation demonstrating proficiency in resource setup.
 
-### Project 2 - End-to-End Web Serverless Application on AWS 
+### Project 2 - End-to-End Serverless Web Application on AWS 
 - **Duration:** 1 weeks
 - **Prerequisite:** Completion of End-to-End Web Application using mutiple AWS Servcies 
 ### **Key Skills** 
